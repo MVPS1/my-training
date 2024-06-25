@@ -4,7 +4,7 @@ app = Flask(__name__)
 print(app)
 print("getfff")
 
-JOBS = ["name", "game", "shame", "tame", "fame"]
+JOBS = ["name", "game", "shame", "tame", "fame", "THE LAST"]
 TITLE = "OSAMA's page"
 @app.route('/')
 def hello_world():
