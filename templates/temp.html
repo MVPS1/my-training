@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print Text Field Content</title>
+    <script>
+        function printTextFieldContent() {
+            var inputText = document.getElementById("inputField").value;
+            document.getElementById("displayText").innerText = inputText;
+        }
+    </script>
+</head>
+<body>
+    <h1>{{title}}</h1>
+    <input type="text" id="inputField" placeholder="Enter some text">
+    <button onclick="printTextFieldContent()">Print Text</button>
+    <p id="displayText"></p>
+  <p>
+    {% include 'sample.html' %}
+  </p>
+</body>
+</html>
