@@ -29,5 +29,13 @@ def loadJob(id):
         else:
             return None
         
+def addJob(id,job,location,salary):
+    with engine.connect() as conn:
+
+        query = text("INSERT INTO jobs VALUES(:Id,:Job,:Location,:Salary)")
+        conn.execute(query, parameters=dict(Id=id, Job=job, Location=location, Salary=salary))
+        conn.commit()
+              
+        
 
 

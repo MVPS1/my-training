@@ -6,16 +6,24 @@
     <title>Print Text Field Content</title>
     <script>
         function printTextFieldContent() {
-            var inputText = document.getElementById("inputField").value;
+            var inputText = document.getElementById("inputField1").value;
             document.getElementById("displayText").innerText = inputText;
         }
     </script>
 </head>
 <body>
     <h1>{{title}}</h1>
-    <input type="text" id="inputField" placeholder="Enter some text">
-    <button onclick="printTextFieldContent()">Print Text</button>
-    <p id="displayText"></p>
+
+    <form action="/addNew" method="post">
+      <input type="text" name="ID" placeholder="Enter some id">
+      <input type="text" name="job" placeholder="Enter some job">
+      <input type="text" name="location" placeholder="Enter some location">
+      <input type="text" name="salary" placeholder="Enter some salary">
+
+      <input type="submit">
+    </form>
+
+
   <p>
     {% include 'sample.html' %}
   </p>
