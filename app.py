@@ -14,10 +14,14 @@ def hello_world():
 
 @app.route('/jobs')
 def list_jobs():
+
+
+
   jobsList = []
   for job in getAllJobs():
-    jobsList.append(list(job))
-  return jsonify(jobsList)
+    jobsList.append(job)
+    print(job)
+  return jsonify()
     
 if __name__ == '__main__':
   app.run(host='0.0.0.0', debug=True, port=8080)
