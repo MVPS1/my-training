@@ -16,5 +16,18 @@ def getAllJobs():
     with engine.connect() as conn:
         result = conn.execute(text("select * from jobs"))
         return result.all()
+        
+
+def loadJob(id):
+    with engine.connect() as conn:
+        result = conn.execute(text("SELECT * FROM jobs WHERE id = :val"), parameters=dict(val=id))
+        row = result.all()
+
+        if len(row) > 0:
+            print("IT's entered while the fuckn length is : ", len(row))
+            return row[0]
+        else:
+            return None
+        
 
 
