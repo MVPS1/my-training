@@ -6,12 +6,15 @@ url_object = URL.create(
     username="root",
     host="localhost",
     database="my-training",
+    
 )
 
 print(url_object)
 engine = create_engine(url_object)
-with engine.connect() as conn:
-    result = conn.execute(text("select * from jobs"))
-    print(result.all())
+
+def getAllJobs():
+    with engine.connect() as conn:
+        result = conn.execute(text("select * from jobs"))
+        return result.all()
 
 
