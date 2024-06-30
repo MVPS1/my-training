@@ -1,6 +1,7 @@
 from sqlalchemy import create_engine, text
 from sqlalchemy import URL
 
+
 url_object = URL.create(
     "mysql", #+pymysql
     username="root",
