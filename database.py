@@ -2,6 +2,7 @@ from sqlalchemy import create_engine, text
 from sqlalchemy import URL
 
 
+
 url_object = URL.create(
     "mysql", #+pymysql
     username="root",
@@ -25,7 +26,6 @@ def loadJob(id):
         row = result.all()
 
         if len(row) > 0:
-            print("IT's entered while the fuckn length is : ", len(row))
             return row[0]
         else:
             return None

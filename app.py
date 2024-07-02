@@ -10,6 +10,15 @@ serial = URLSafeTimedSerializer('SecretKey!') #This supposed to be secret
 app = Flask(__name__)
 print(app)
 
+
+
+app.config['MAIL_SERVER'] = 'smtp.googlemail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USERNAME'] = 'temproryosama123@gmail.com'
+app.config['MAIL_PASSWORD'] = 'lhje fnuq vxlp njua'
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USE_SSL'] = False
+
 mail = Mail(app)
 
 TITLE = "OSAMA's Page"
@@ -28,6 +37,20 @@ def submit():
   token = serial.dumps(email, salt='email-confirm') #salt is not necessary
 
   link = url_for('confirm_email', token=token, _external=True)
+  theSender = "noreply@app.com"
+  msg_title = 'Hi i am new email'
+  msg = Message(msg_title, sender=theSender, recipients=[email])
+  msg_body = '{}'.format(link)
+
+  data = {'app_name': "Osama con.", 'title':msg_title, 'body': msg_body}
+  msg.html = render_template('email.html', data=data)
+  try:
+    mail.send(msg)
+    return "<h1>Check your email</h1>"
+  except Exception as e:
+    print(e)
+    print("BIG FAIL")
+
   return "<h1>Your email is {} <a href='{}'>Click to Confirm</a></h1>".format(email, link)
 
 @app.route('/email_confirm/<token>')
