@@ -1,8 +1,9 @@
-from flask import Flask, url_for, render_template, jsonify, request
+from flask import Flask, url_for, render_template, jsonify, request, session
 from database import getAllJobs, loadJob, addJob
 import json
 from flask_mail import Mail, Message
 from itsdangerous import URLSafeTimedSerializer, SignatureExpired
+from authlib.integrations.flask_client import OAuth
 
 serial = URLSafeTimedSerializer('SecretKey!') #This supposed to be secret
 
@@ -14,8 +15,8 @@ print(app)
 
 app.config['MAIL_SERVER'] = 'smtp.googlemail.com'
 app.config['MAIL_PORT'] = 587
-app.config['MAIL_USERNAME'] = 'temproryosama123@gmail.com'
-app.config['MAIL_PASSWORD'] = 'lhje fnuq vxlp njua'
+app.config['MAIL_USERNAME'] = 'temproryosama123@gmail.com' #This supposed to be secret
+app.config['MAIL_PASSWORD'] = 'lhje fnuq vxlp njua' #This supposed to be secret
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
 
